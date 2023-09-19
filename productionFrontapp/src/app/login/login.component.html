@@ -1,0 +1,71 @@
+
+<div class="container-xxl">
+  <div class="authentication-wrapper authentication-basic container-p-y">
+    <div class="authentication-inner">
+      <!-- Register -->
+      <div class="card">
+        <div class="card-body">
+          <!-- Logo -->
+    
+          <!-- /Logo -->
+          <h4 class="mb-2">Welcome to industry ! 👋</h4>
+          <p class="mb-4">Please sign-in to your account and start the adventure</p>
+<form #loginForm="ngForm" (ngSubmit)="onLogin(loginForm.value)" id="formAuthentication" class="mb-3">     
+            <div class="mb-3">
+              <label for="username" class="form-label">Username/E-mail</label>
+  
+              <input type="text" class="form-control" name="username" 
+              placeholder="Username/E-mail" ngModel
+              #usernameInput="ngModel" required  autofocus /> 
+            </div>  <span class="help-block" style="color:red;"
+        *ngIf="usernameInput.invalid && usernameInput.touched">Please enter a username OR E-mail</span>
+
+
+
+        <div class="input-group input-group-merge">
+          <input type="{{ showPassword ? 'text' : 'password' }}" class="form-control" name="password" placeholder="Password"
+                 [(ngModel)]="password"
+                 #passwordInput="ngModel" required aria-describedby="password">
+          
+          <span class="input-group-text cursor-pointer" (click)="togglePasswordVisibility()">
+            <i [ngClass]="showPassword ? 'bx bx-show' : 'bx bx-hide'"></i>
+          </span>
+        </div>
+        
+            
+
+            <div class="mb-3">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="remember-me" />
+                <label class="form-check-label" for="remember-me"> Remember Me </label>
+              </div>
+            </div>
+            <div class="mb-3">
+          
+
+            <button type="submit" [disabled]="loginForm.invalid || showLoading" name="button" class="btn login_btn">
+              <i *ngIf="showLoading" class="fas fa-spinner fa-spin"></i>&nbsp;&nbsp;
+              <span *ngIf="showLoading">Loading...</span>
+              <span *ngIf="!showLoading">Login</span>
+            </button>
+</div>
+
+
+
+          </form>
+
+      
+          <p class="text-center">
+            <span> Don't have an account? </span>
+            <a routerLink="/register" class="ml-2" style="color: #2C3E50;">
+              <span>Create an account</span>
+            </a>
+          </p>
+        </div>
+      </div>
+      <!-- /Register -->
+    </div>
+  </div>
+</div>
+
+

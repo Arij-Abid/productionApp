@@ -1,0 +1,61 @@
+ <!-- Layout wrapper -->
+ <div class="layout-wrapper layout-content-navbar">
+    <div class="layout-container">
+      <!-- Menu -->
+
+  <app-sidebar></app-sidebar>
+      <!-- / Menu -->
+
+      <!-- Layout container -->
+      <div class="layout-page">
+        <!-- Navbar -->
+      <app-navbar></app-navbar>
+        <!-- / Navbar -->
+
+        <!-- Content wrapper -->
+        <div class="content-wrapper">
+          <!-- Content -->
+
+          <div class="container">
+          <br><br>
+    
+                      <h3>Ajouter une machine</h3>
+          
+                  
+                      <form (ngSubmit)="addMachine()">
+                        <div class="form-group">
+                          <label for="nom">Nom:</label>
+                          <input type="text" class="form-control" name="nom" id="nom" [(ngModel)]="machine.nom">
+                        </div>
+                        <div class="form-group">
+                          <label for="description">Description:</label>
+                          <textarea class="form-control"  name="description" id="description" [(ngModel)]="machine.description"></textarea>
+                        </div>
+                        <div class="form-group">
+                          <label for="capacite">Capacité:</label>
+                          <input type="number" class="form-control" name="capacite"  id="capacite" [(ngModel)]="machine.capacite">
+                        </div>
+                        <div class="form-group">
+                         
+                        <label for="status">Statut:</label>
+                        <select class="form-control"  id="status" [(ngModel)]="machine.status" name="status" required>
+                          <option value="">-- Sélectionnez un statut --</option>
+                          <option value="En marche">En marche</option>
+                          <option value="En panne">En panne</option>
+                          <option value="Hors service">Hors service</option>
+                        </select>
+                        </div>
+          
+          
+                        
+                   
+                        <button type="submit" class="btn btn-primary mr-2">Ajouter</button>
+                        <a routerLink="/machines" class="btn btn-secondary">Annuler</a>
+                      </form>
+        
+        
+          </div>
+          </div>
+          </div>
+          </div>
+          </div>

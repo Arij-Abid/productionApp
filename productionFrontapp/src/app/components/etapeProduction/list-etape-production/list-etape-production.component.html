@@ -1,0 +1,250 @@
+ <!-- Layout wrapper -->
+ 
+  
+ <div class="layout-wrapper layout-content-navbar">
+    <div class="layout-container">
+      <!-- Menu -->
+
+  <app-sidebar></app-sidebar>
+      <!-- / Menu -->
+      <div class = "notification" style="position: absolute; top: 60px; right: 60px;">
+        <a href = "#">
+        <div class = "notBtn" href = "#">
+          <!--Number supports double digets and automaticly hides itself when there is nothing between divs -->
+          <div class = "number">{{ notifications.length }}</div>
+          <i class="fas fa-bell"></i>
+              
+
+            <div class = "box">
+              <div class = "display">
+                <div class = "nothing"> 
+                  <i class="fas fa-child stick"></i> 
+                  <div class = "cent">Looks Like your all caught up!</div>
+                </div>
+                
+                <li *ngFor="let etapeProduction of etapeProductions">
+                <div class = "cont"><!-- Fold this div and try deleting evrything inbetween -->
+                   <div class = "sec new">
+                     <a href = "#">
+                     <div class = "profCont">
+
+                     <img class = "profile" [src]="etapeProduction.employee_id.profileImageUrl"/>
+                      </div>
+
+
+                 
+                     <div class = "txt">
+                      <li *ngFor="let notification of notifications">{{ notification }}</li>
+                     </div>
+                    <div class = "txt sub">
+                      
+                 
+                  {{ etapeProduction.datedebut }}
+<hr>
+      </div>
+                     </a>
+                  </div>
+             
+               </div>
+              </li>
+              <hr>
+              </div>
+           </div>
+        </div>
+          </a>
+      </div>
+      <!-- Layout container -->
+      <div class="layout-page">
+        <!-- Navbar -->
+        
+      <app-navbar></app-navbar>
+        <!-- / Navbar -->
+   
+
+        <!-- Content wrapper -->
+        <div class="content-wrapper">
+          <!-- Content -->
+
+<br>
+
+  
+<!-- table integartion  -->
+<div class="container-xxl flex-grow-1 container-p-y">
+<h4 class="fw-bold py-3 mb-4">
+    <span class="text-muted fw-light"> 
+      <h4>Liste des Étapes de Production</h4>
+    </span> 
+    <br>
+
+    <a  [hidden]="!isAdminOrResponsable"  routerLink="/ajouter/etapeProduction" style="float: right;" class="btn btn-info"> 
+      <i class='fas fa-plus-circle'></i>&nbsp; Ajouter étape de Production
+
+</a>
+
+
+
+
+
+<br><br>
+</h4>
+
+
+
+<!--  
+<div>
+  <span class="notification-badge">{{ notifications.length }}</span>
+  <i class="fa fa-bell"></i>
+</div>
+
+
+<ul class="notifications">
+  <li *ngFor="let notification of notifications">{{ notification }}</li>
+</ul>
+-->
+
+
+<br>
+<!-- Basic Bootstrap Table -->
+<div class="card">
+  <h5 class="card-header">Etapes de production</h5>
+  <div class="table-responsive text-nowrap">
+    <table class="table">
+      <thead>			
+        <tr>
+          <th>#</th> 
+          <th>Name</th>
+          <th>date de debut</th>
+          <th>date de fin</th>
+          <th>Employee</th>
+          <th>Ordre de fabrication</th>
+          <th>status</th>
+          <th>Progression</th>
+          <th>  Num Etape</th> 
+
+     
+     
+        <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody class="table-border-bottom-0">
+      
+        <!--         ordre_fabrication_id: OrdreFabrication, -->
+
+
+
+        <tr *ngFor="let etapeProduction of etapeProductions">
+            
+          <td>{{ etapeProduction.id}}</td>
+          <td>{{ etapeProduction.name}}</td>
+          <td>{{ etapeProduction.datedebut }}</td> 
+           <td>{{ etapeProduction.datefin}}</td>
+        
+           <td>
+            <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
+              <li
+                data-bs-toggle="tooltip"
+                data-popup="tooltip-custom"
+                data-bs-placement="top"
+                class="avatar avatar-xs pull-up"
+                title="{{ etapeProduction.employee_id.username }}"
+              >
+                <img src="{{ etapeProduction.employee_id.profileImageUrl}}" alt="Avatar" class="rounded-circle" />
+              </li>{{ etapeProduction.employee_id.username}}
+              </ul>
+              </td>
+          
+
+
+           <td>{{ etapeProduction.ordre_fabrication_id.name}}</td>
+
+
+          
+
+          <td>
+            <ng-container [ngSwitch]="etapeProduction.status">
+              <span class="badge bg-label-info me-1" *ngSwitchCase="'En développement'">
+                {{ etapeProduction.status }}
+              </span>
+              <span class="badge bg-label-warning me-1" *ngSwitchCase="'En attente'">
+                {{ etapeProduction.status }}
+              </span>
+              <span class="badge bg-label-danger me-1" *ngSwitchCase="'Annulé'">
+                {{ etapeProduction.status }}
+              </span>
+              <span class="badge bg-label-success me-1" *ngSwitchCase="'Terminé'">
+                {{ etapeProduction.status }}
+              </span>
+            </ng-container>
+          </td>
+          
+
+
+      
+          <td>
+            <div class="progress">
+              <div class="progress-bar progress-bar-striped active"
+                   [ngClass]="{
+                     'bg-success': etapeProduction.progression >= 75,
+                     'bg-warning': etapeProduction.progression >= 25 && etapeProduction.progression < 75,
+                     'bg-danger': etapeProduction.progression < 25
+                   }"
+                   role="progressbar"
+                   [attr.aria-valuenow]="etapeProduction.progression"
+                   aria-valuemin="0"
+                   aria-valuemax="100"
+                   [style.width.%]="etapeProduction.progression">
+                {{ etapeProduction.progression }}%
+              </div>
+            </div>
+          </td>
+          
+          
+
+          <td>{{ etapeProduction.numEtape }}</td>
+   
+
+
+        <td>
+
+          <a class="btn btn-warning" [routerLink]="['/update/etapeProduction/', etapeProduction.id]">
+            <i class="fa fa-edit edit"></i>
+          </a>
+          
+
+         
+          
+          &nbsp;&nbsp;
+       
+
+          <button [hidden]="!isAdminOrResponsable" class="btn btn-danger" (click)="deleteEtapeProduction(etapeProduction)">
+            <i class="fa fa-trash-alt delete"></i>
+          </button>
+               
+        </td>
+        </tr>
+   
+      </tbody>
+    </table>
+    <br>
+  </div>
+</div>
+<!--/ Basic Bootstrap Table -->
+
+<br>
+
+
+</div>
+
+
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+    

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thyemleaf/layout"
+layout:decorateur="template">
+
+<head>
+<title>Insert title here</title>
+</head>
+<body>
+<div layout:fragment="content">
+
+<table>
+<tr>
+<th>ID</th>
+<th>name</th>
+
+
+</tr>
+<tr th:each="p:${products}">
+
+<td th:text="${p.id}"></td>
+<td></td>
+
+
+</tr>
+</table>
+</div>
+</body>
+</html>

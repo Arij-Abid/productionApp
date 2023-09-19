@@ -1,0 +1,50 @@
+
+    .e-progressbar,
+    #tooltip-lineardeterminate,
+    #tooltip-linearindeterminate,
+    #tooltip-linearbuffer,
+    #tooltip-linearsegment {
+        display: block;
+    }
+
+    #control-container {
+        padding: 0px !important;
+    }
+
+    .replay-progressbar {
+        right: 100px;
+    }
+
+    .tooltip-linear-parent {
+        text-align: center;
+        width: 80%;
+        margin: auto !important;
+    }
+
+    .tooltip-progressbar-label {
+         text-align: left;
+        font-family: Roboto-Regular;
+        font-size: 14px;
+        color: #3D3E3C;
+        top: 10px;
+        margin-left: 10px;
+        padding: 0px;
+    }
+
+    #successtext {
+        color: black;
+        top: 20px;
+        right: 245px;
+    }
+
+    #warningtext {
+        color: black;
+        top: 20px;
+        right: 268px;
+    }
+
+    #errortext {
+        color: black;
+        top: 20px;
+        right: 260px;
+    }

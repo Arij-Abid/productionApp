@@ -1,0 +1,100 @@
+<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+    <div class="app-brand demo">
+      <a href="index.html" class="app-brand-link">
+        
+        <img
+                            src="assets/admin_dashboard/assets/img/machinery.png"
+                            height="50"
+                            alt="View Badge User"
+               
+                          />
+ <span class="app-brand-text demo menu-text fw-bolder ms-2">Industry </span>
+      
+  </a>
+
+      <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
+        <i class="bx bx-chevron-left bx-sm align-middle"></i>
+      </a>
+    </div>
+
+    <div class="menu-inner-shadow"></div>
+
+    <ul class="menu-inner py-1">
+      <!-- Dashboard -->
+      <li class="menu-item" [class.active]="selectedButton === 'dashboard'"(click)="selectButton('dashboard')">
+        <a class="menu-link" routerLink="/dashboard">
+          <i class="menu-icon tf-icons bx bx-home-circle"></i>
+          <div data-i18n="Analytics">Dashboard</div>
+        </a>
+      </li>
+
+
+      <li class="menu-header small text-uppercase">
+        <span class="menu-header-text">Main</span>
+      </li>
+    <!-- User interface -->
+    <li [hidden]="!isAdminOrResponsable" class="menu-item" [class.active]="selectedButton === 'users'">
+      <a class="menu-link" routerLink="/user/management"(click)="selectButton('users')">
+    
+        <i class="menu-icon fa fa-users"></i>
+        <div data-i18n="User interface">
+          Utilisateurs</div>
+      </a>
+      
+    </li>
+   
+      <!-- Components -->
+      <li [hidden]="!isAdminOrResponsable" class="menu-header small text-uppercase"><span class="menu-header-text"></span></li>
+      <!-- Cards -->
+      <li  [hidden]="!isAdmin" class="menu-item"[class.active]="selectedButton === 'clients'">
+          <a class="menu-link" routerLink="/clients" (click)="selectButton('clients')">
+    
+          <i class='menu-icon tf-icons bx bxs-user'></i>
+          <div data-i18n="Basic">Clients</div>
+        </a>
+      </li>
+  
+
+      <li  [hidden]="!isAdminOrResponsable" class="menu-item" [class.active]="selectedButton === 'ordreFabrications'">
+        <a href="javascript:void(0);" class="menu-link menu-toggle" routerLink="/ordreFabrications" (click)="selectButton('ordreFabrications')">
+          <i class="menu-icon tf-icons bx bx-cube-alt"></i>
+          <div data-i18n="Misc">Ordres de Fabrication</div>
+        </a>
+      </li>
+
+  
+      <li class="menu-item" [class.active]="selectedButton === 'etaps'">
+        <a href="javascript:void(0);" class="menu-link menu-toggle" routerLink="/etape/production" (click)="selectButton('etaps')">
+          <i class='menu-icon tf-icons bx bx-clipboard'></i>
+          <div data-i18n="Misc">Étapes de production</div>
+        </a>
+      </li>
+      
+
+      <li  [hidden]="!isAdmin" class="menu-item" [class.active]="selectedButton === 'produits'">
+        <a routerLink="/produit" class="menu-link" (click)="selectButton('produits')">
+      
+          <i class='menu-icon tf-icons  bx bx-layer'></i>
+          <div data-i18n="Boxicons">Produits</div>
+        </a>
+      </li>
+
+      
+      <li [hidden]="!isAdmin" class="menu-item" [class.active]="selectedButton === 'categories'">
+        <a routerLink="/category" class="menu-link" (click)="selectButton('categories')">
+          <i class='menu-icon tf-icons  bx bx-list-ul'></i>
+          <div data-i18n="Form Elements">Catégories</div>
+        </a>
+    
+      </li>
+    
+      <!-- Tables -->
+      <li class="menu-item" [class.active]="selectedButton === 'calendriers'">
+        <a routerLink="/calendrier" class="menu-link" (click)="selectButton('calendriers')">
+          <i class="menu-icon tf-icons bx bx-table"></i>
+          <div data-i18n="Tables">calendrier</div>
+        </a> 
+      </li>
+    
+    </ul>
+  </aside>

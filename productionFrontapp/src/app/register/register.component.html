@@ -1,0 +1,67 @@
+
+<div class="container-xxl">
+  <div class="authentication-wrapper authentication-basic container-p-y">
+    <div class="authentication-inner">
+      <!-- Register Card -->
+      <div class="card">
+        <div class="card-body">
+          <!-- Logo -->
+         
+          <!-- /Logo -->
+          <h4 class="mb-2">Adventure starts here 🚀</h4>
+
+          <form #registerForm="ngForm" (ngSubmit)="onRegister(registerForm.value)">
+            <div class="mb-3">
+              <label for="username" class="form-label">first Name</label>
+              <input type="text" class="form-control" name="firstName" placeholder="First name" required ngModel #firstNameInput="ngModel">
+            </div>
+
+            <span class="help-block" *ngIf="firstNameInput.invalid && firstNameInput.touched" style="color:red;">Please enter a first name</span>
+
+            <div class="mb-3">
+              <label for="lastName" class="form-label">lastName</label>
+              <input type="text" class="form-control" name="lastName" placeholder="Last name" required ngModel #lastNameInput="ngModel">
+            </div>
+            <span class="help-block" *ngIf="lastNameInput.invalid && lastNameInput.touched" style="color:red;">Please enter a last name</span>
+
+            <div class="mb-3">
+              <label for="username" class="form-label">userName</label>
+              <input type="text" class="form-control" name="username" placeholder="Username" required ngModel #usernameInput="ngModel">
+            </div>
+            <span class="help-block" *ngIf="usernameInput.invalid && usernameInput.touched" style="color:red;">Please enter a username</span>
+
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="text" class="form-control" name="email" placeholder="Email" required ngModel #emailInput="ngModel">
+            </div>
+            <span class="help-block" *ngIf="emailInput.invalid && emailInput.touched" style="color:red;">Please enter an email.</span>
+
+
+            
+
+
+            <button [disabled]="registerForm.invalid || showLoading" type="submit" name="button" class="btn login_btn">
+              <i *ngIf="showLoading" class="fas fa-spinner fa-spin"></i>&nbsp;&nbsp;
+              <span *ngIf="showLoading">Loading...</span>
+              <span *ngIf="!showLoading">Register</span>
+            </button>
+
+          </form>
+<br><br>
+          <p class="text-center">
+            <span>Already have an account?</span>
+            <a routerLink="/login"  class="ml-2" style="color: #2C3E50;">
+
+              <span>Log In</span>
+            </a>
+          </p>
+        </div>
+      </div>
+      <!-- Register Card -->
+    </div>
+  </div>
+</div>
+
+<!-- / Content -->
+
+<notifier-container></notifier-container>

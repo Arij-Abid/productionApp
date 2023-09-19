@@ -1,0 +1,185 @@
+<!-- Layout wrapper -->
+<div class="layout-wrapper layout-content-navbar">
+    <div class="layout-container">
+      <!-- Menu -->
+      <app-sidebar></app-sidebar>
+      <!-- / Menu -->
+  
+      <!-- Layout container -->
+      <div class="layout-page">
+        <!-- Navbar -->
+        <app-navbar></app-navbar>
+        <!-- / Navbar -->
+  
+        <!-- Content wrapper -->
+        <div class="content-wrapper">
+          <!-- Content -->
+          <div class="container-xxl flex-grow-1 container-p-y">
+            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">product/</span> Nouveau product</h4>
+  
+            <!-- Basic Layout & Basic with Icons -->
+            <div class="row">
+              <div class="col-xxl">
+                <div class="card mb-4">
+                  <div class="card-header d-flex align-items-center justify-content-between">
+                    <h5 class="mb-0">Nouveau product</h5>
+                  </div>
+                  <div class="card-body" *ngIf="isAdminOrSuperAdmin">
+                    <br>
+                    <form (ngSubmit)="addProduct()">
+                      <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label" for="nom">Nom</label>
+                        <div class="col-sm-10">
+                          <div class="input-group input-group-merge">
+                            <span id="basic-icon-default-fullname2" class="input-group-text"><i class='bx bxl-product-hunt'></i></span>
+                            <input
+                              type="text"
+                              class="form-control"
+                              name="nom" id="nom" [(ngModel)]="product.nom"
+                              placeholder="Saisissez le nom du produit"
+                              aria-label="Saisissez le nom"
+                              aria-describedby="basic-icon-default-fullname2"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                
+                      <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label"  for="description">Description</label>
+                        <div class="col-sm-10">
+                          <div class="input-group input-group-merge">
+                            <span id="basic-icon-default-message2" class="input-group-text"
+                              ><i class='bx bx-detail'></i></span>
+                            <textarea
+                            name="description" id="description" [(ngModel)]="product.description"
+                              class="form-control"
+                              placeholder="Saisissez la description."
+                              aria-label="Saisissez la description"
+                              aria-describedby="basic-icon-default-message2"
+                            ></textarea>
+                          </div>
+                        </div>
+                      </div>
+
+
+                      <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label" for="prix"> Prix</label>
+                        <div class="col-sm-10">
+                          <div class="input-group input-group-merge">
+                            <span id="basic-icon-default-company2" class="input-group-text"><i class='bx bx-purchase-tag' ></i></span><i class='bx bx-money-withdraw'></i>
+                            <input
+                              type="number"
+                              name="prix" id="prix" [(ngModel)]="product.prix"
+                              class="form-control"
+                              placeholder="Saisissez le prix."
+                              aria-label="Saisissez le prix"
+                              aria-describedby="basic-icon-default-company2"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label" for="dateCreation"> Date Creation</label>
+                        <div class="col-sm-10">
+                          <div class="input-group input-group-merge">
+                            <span id="basic-icon-default-company2" class="input-group-text"><i class='bx bx-time'></i></span>
+                            <input
+                              type="date"
+                              name="dateCreation" id="dateCreation" [(ngModel)]="product.dateCreation"
+                              class="form-control"
+                              placeholder="Saisissez la date de Creation"
+                              aria-label="Saisissez la date Creation"
+                              aria-describedby="basic-icon-default-company2"
+                            />
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label" for="livraison"> Livraison</label>
+                        <div class="col-sm-10">
+                          <div class="input-group input-group-merge">
+                            <span id="basic-icon-default-company2" class="input-group-text"><i class='bx bx-timer'></i></span>
+                            <input
+                              type="date"
+                              name="livraison" id="livraison" [(ngModel)]="product.livraison"
+                              class="form-control"
+                              placeholder="Saisissez la date de livraison"
+                              aria-label="Saisissez la date de livraison"
+                              aria-describedby="basic-icon-default-company2"
+                            />
+                          </div>
+                        </div>
+                      </div>
+    
+                      <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label" for="quantiteStock"> Quantite Stock</label>
+                        <div class="col-sm-10">
+                          <div class="input-group input-group-merge">
+                            <span id="basic-icon-default-company2" class="input-group-text"><i class="bx bx-buildings"></i></span>
+                            <input
+                              type="number"
+                              name="quantiteStock" id="quantiteStock" [(ngModel)]="product.quantiteStock"
+                              class="form-control"
+                              placeholder="Saisissez la quantiteStock"
+                              aria-label="Saisissez la quantiteStock"
+                              aria-describedby="basic-icon-default-company2"
+                            />
+                          </div>
+                        </div>
+                      </div>
+  
+                    
+                      
+                 
+
+                      <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label" for="category_id"> Category</label>
+                        <div class="col-sm-10">
+                          <div class="input-group input-group-merge">
+                            <span id="basic-icon-default-company2" class="input-group-text"><i class='bx bx-category-alt'></i></span>
+                     
+                            <select id="category_id" id="defaultSelect" class="form-select"   name="category_id" [(ngModel)]="product.category_id.id" required [ngModelOptions]="{ standalone: true }">
+                              <option value="">Sélectionner category</option>
+                              <option *ngFor="let category of categorys" [value]="category.id">{{ category.name }}</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label" for="id_OF"> Ordre de Fabrication</label>
+                        <div class="col-sm-10">
+                          <div class="input-group input-group-merge">
+                            <span id="basic-icon-default-company2" class="input-group-text">     <i class="menu-icon tf-icons bx bx-cube-alt"></i></span>
+                     
+                            <select id="id_OF" id="defaultSelect" class="form-select"   name="id_OF" [(ngModel)]="product.id_OF" required [ngModelOptions]="{ standalone: true }">
+                              <option value="">Sélectionner id_OF</option>
+                              <option *ngFor="let ordreFabrication of ordreFabrications" [value]="ordreFabrication.id">{{ ordreFabrication.name}}</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+
+
+
+
+                      <div class="row justify-content-end">
+                        <div class="col-sm-10">
+                          <button type="submit" class="btn btn-primary mr-2">Ajouter</button>
+                          <a routerLink="/produit" type="button" class="btn btn-secondary">Annuler</a>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- / Content -->
+      </div>
+      <!-- / Layout container -->
+    </div>
+  </div>
+  
