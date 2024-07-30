@@ -106,5 +106,7 @@ The default password for the super administrator's authentication in the applica
 **username:** admin
 
 **password:** admin123
+
+
 ![admin](https://github.com/user-attachments/assets/d1c0ee53-8c56-4d04-9653-38fd57b872a8)
 
