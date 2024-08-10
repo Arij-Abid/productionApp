@@ -110,3 +110,21 @@ The default password for the super administrator's authentication in the applica
 
 ![admin](https://github.com/user-attachments/assets/d1c0ee53-8c56-4d04-9653-38fd57b872a8)
 
+
+## Screenshot of continuous deployment through Jenkins pipelines: 
+
+
+![valid papline](https://github.com/user-attachments/assets/875fd2af-c1f3-47ca-9eb8-ac0e1874848f)
+
+## Screenshot of the Docker image, including both the backend and frontend
+
+
+![Capture d’écran du 2024-08-07 09-55-45](https://github.com/user-attachments/assets/d9659658-b4fb-4cf0-bd05-8c244f704b03)
+
+
+
+
+
+
+
+
